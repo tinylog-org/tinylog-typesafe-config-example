@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.pmw.tinylog.ExternalConfigurator;
+import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Logger;
 
 import com.typesafe.config.Config;
@@ -19,7 +19,7 @@ public class Application {
 		Stream<Entry<String, ConfigValue>> stream = config.entrySet().stream();
 		Map<String, ?> map = stream.collect(Collectors.toMap(Entry::getKey, entry -> entry.getValue().unwrapped()));
 		
-		ExternalConfigurator.fromMap(map).activate();
+		Configurator.fromMap(map).activate();
 		
 		Logger.info("Hello World!");
 	}
